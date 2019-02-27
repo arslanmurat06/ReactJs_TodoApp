@@ -4,17 +4,26 @@ import { Footer } from './components/footer';
 import { Header } from './components/header';
 import {TodoForm} from './components/todoform';
 
+const tasks = ["Read book!", "Walk around"];
+
+
 class App extends Component {
   
-  render() {
+  addTask(val)
+  {
+  console.log(tasks);
+  tasks.push(val);
+  console.log(tasks);
+  }
 
-    const tasks = ["Read book!", "Walk around"];
+
+  render() {
     
      return (
 
       <div className="content">
-      <Header/>
-       <TodoForm/>
+      <Header/> 
+       <TodoForm addTask={this.addTask}/>
         <Todolist myTasks={tasks} />
         <Footer/>
       
