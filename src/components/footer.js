@@ -10,7 +10,4 @@ export class Footer extends Component {
         );
       
     }
-
-
-
 }

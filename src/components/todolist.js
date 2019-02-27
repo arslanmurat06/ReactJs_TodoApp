@@ -8,14 +8,22 @@ export class Todolist extends Component {
 
       (element, i)=> {
 
-        return(  <li>{element}</li>)
+        return(  
+          <li>
+          <span className="id">{i}</span>
+          <span>{element}</span>
+          <span className ="type"/>
+          <span className="delete"/>
+          </li>
+          
+          )
 
       }
     );
 
     return(
   
-      <div className="todo-list">
+      <div className="todo-list type1">
         <ul>{items}</ul>
       </div>
 
