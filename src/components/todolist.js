@@ -2,28 +2,27 @@ import React, { Component } from 'react';
 
 export class Todolist extends Component {
 
-  constructor() {
-    
-      super();
+  constructor(props){
 
-      this.doneTask = this.doneTask.bind(this);
-      this.removeTask = this.removeTask.bind(this);
+    super(props);
+    this.doneTask =this.doneTask.bind(this);
+    this.removeTask =this.removeTask.bind(this);
 
-
-  }
-
-  doneTask(val) {
-
-    console.log("Task tamamlandı");
-    
 
   }
 
-  removeTask(val){
+  doneTask(e) {
 
-    console.log("Task silindi");
+    console.log('dıne task basıldı');
+    this.props.doneTask(e.target.parentNode.id);
+
   }
-    render() {
+  removeTask(e){
+
+    this.props.removeTask(e.target.parentNode.id);
+  }
+    render()
+    {
 
       const items_left = 0;
       const items_right = 0;
@@ -31,11 +30,12 @@ export class Todolist extends Component {
     const items = this.props.myTasks.map(
 
       (element, i)=> {
-
+          let task_id = 'task_'+i;
+          
         return(  
-          <li key={i}>
+          <li key={i} id={task_id} className={element.status}>
             <span className="id">{i}</span>
-           <span>{element}</span>
+           <span className="title">{element.text}</span>
             <span className ="type" onClick={this.doneTask}/>
             <span className="delete" onClick={this.removeTask}/>
           </li>
